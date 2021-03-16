@@ -3,7 +3,7 @@ package org.scalajs.jfe.functional
 import org.scalajs.ir.{Types => jst}
 import org.eclipse.jdt.core.dom.{ASTVisitor, TypeDeclaration}
 import org.scalajs.jfe.ASTUtils
-import org.scalajs.jfe.trees.{Capture, CaptureVisitor}
+//import org.scalajs.jfe.trees.{Capture, CaptureVisitor}
 import org.scalatest.funspec.AnyFunSpec
 
 class LocalClassTests extends AnyFunSpec {
@@ -27,7 +27,7 @@ class LocalClassTests extends AnyFunSpec {
       assert(ir.length == 2)
     }
 
-    it("identifies captured variables") {
+    /*it("identifies captured variables") {
       val src = mkMain(
         """int capture1 = 10;
            |String capture2 = "capture";
@@ -52,9 +52,9 @@ class LocalClassTests extends AnyFunSpec {
       )
       ASTUtils.javaToSJS(src)
 //      assert(visitor.captures == expected)
-    }
+    }*/
 
-    it("sandbox") {
+    /*it("sandbox") {
       val src =
         """class Holder {
            |    public Holder() {}
@@ -75,6 +75,6 @@ class LocalClassTests extends AnyFunSpec {
 
       ASTUtils.javaToSJS(src).foreach(ASTUtils.printAST)
       assertRun(src, "capture")
-    }
+    }*/
   }
 }

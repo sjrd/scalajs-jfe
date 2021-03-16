@@ -32,7 +32,7 @@ class FunctionalTests extends AnyFunSpec with BeforeAndAfter {
     TextUtils.clearFreshNames()
   }
 
-  it("links Java programs and prints to the console") {
+  /*it("links Java programs and prints to the console") {
     val src =
       """class Main {
         |    public static void main() {
@@ -41,7 +41,7 @@ class FunctionalTests extends AnyFunSpec with BeforeAndAfter {
         |}
         |""".stripMargin
     assertRun(src, "The linker works")
-  }
+  }*/
 
   describe("Javalib:") {
     it("calls JDK static methods") {
