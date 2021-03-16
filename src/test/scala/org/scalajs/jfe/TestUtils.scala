@@ -77,10 +77,25 @@ object TestUtils {
     Await.result(jsEnv.start(input, runConfig).future, MAX_RUNTIME)
 
     val actualOut = out match {
-      case Some(o) => new String(o.readAllBytes(), StandardCharsets.UTF_8)
+      case Some(o) => new String(readAllBytes(o), StandardCharsets.UTF_8)
       case None => "Could not capture JS output stream!"
     }
     assert(actualOut == expectedOut + "\n")
+  }
+
+  private def readAllBytes(is: InputStream): Array[Byte] = {
+    val buffer = new java.io.ByteArrayOutputStream()
+
+    var nRead = -1
+    val data = new Array[Byte](16384)
+
+    do {
+      nRead = is.read(data, 0, data.length)
+      if (nRead > 0)
+        buffer.write(data, 0, nRead)
+    } while (nRead != -1)
+
+    buffer.toByteArray()
   }
 
   def assertRun(javaCode: String, expectedOut: Seq[Any]): Unit =
